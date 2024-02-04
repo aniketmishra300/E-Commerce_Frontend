@@ -13,7 +13,7 @@ body{
   justify-content: space-between;
   align-items: center;
   height: 60px;
-  width: 100%;
+  width: 100vw;
   /* gap: 20px; */
   background-color: #488596;
   position: fixed;
@@ -44,7 +44,7 @@ body{
 
 .Search_box{
   height: 35px;
-  width: 700px;
+  width:60%;
   margin: 10px;
   border-radius: 5px;
   font-size: larger;
@@ -96,7 +96,7 @@ body{
 
 .Loginicontab{
   display: flex;
-  gap: 20px;
+  gap: 10px;
   justify-content: center;
   align-items:center ;
 }
@@ -154,6 +154,33 @@ body{
   
   border:2px solid green;
 }
+
+.Login_Form{
+  position: absolute;
+  top: 25%;
+  left: 25%;
+  /* transform:translate(50%,30%); */
+  width: 800px;
+  height: 400px;
+  border: 5px solid red;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.Login_Btn{
+  padding: 10px;
+  background-color: grey;
+  border-radius: 5px;
+}
+
+
+.Email_input{
+  font-size: larger;
+}
+
 
 /* 
 :hover{

@@ -10,7 +10,7 @@ const DynamicPage = () => {
 
     useEffect(() => {
         const fetchData = async () => {
-            const response = await axios.get('http://localhost:5050/pages/')
+            const response = await axios.post('http://localhost:5050/pages/AllData')
             // console.log(response.data)
             setItem(response.data)
         }

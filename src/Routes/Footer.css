@@ -1,0 +1,86 @@
+
+*{
+    margin: 0;
+    padding: 0;
+}
+
+
+.Footer{
+    display: flex;
+    justify-content: space-around;
+    background :linear-gradient(to right, rgb(120, 123, 100) 50%,rgb(53, 84, 75)) ;
+    height: auto;
+    width: 100%;
+    position: relative;
+    top: 60px;
+}
+
+.Footer_Siren{
+    display: flex;
+    justify-content: center;
+}
+
+.The{
+    rotate: 90deg;
+    margin: 2px;
+}
+
+.siren{
+    width: 40%;
+}
+
+.Footer_Box_First{
+    text-align: center;
+    width: 30%;
+    margin: 10px;
+}
+
+.Footer_Box_Second{
+    text-align: center;
+    width: 30%;
+    margin: 10px;
+    font-weight: bold;
+}
+
+
+.Footer_Box_Third{
+    color: white;
+    text-align: center;
+    width: 30%;
+    margin: 10px;
+}
+
+.nav_logo img{
+    width: 30px;
+    margin: 10px;
+}
+
+.Quick_links a{
+    font-weight: bolder;
+    text-decoration: none;
+}
+
+
+
+@media screen and (min-width:350px) and (max-width:540px) {
+
+
+.Footer{
+    font-size: 10px;
+    width: 100vw;
+}
+
+.Footer img{
+    width: 18px;
+}
+
+.Footer_Box_First,.Footer_Box_Third{
+    width: 40vw;
+}
+
+.Footer_Box_Second{
+    
+    display: none;
+    
+}
+}

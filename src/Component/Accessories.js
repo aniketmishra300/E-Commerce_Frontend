@@ -1,15 +1,20 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import {NavLink} from 'react-router-dom'
+import { useDispatch } from 'react-redux'
+import {add} from "../Store/Action"
+import Footer from '../Routes/Footer'
+
 
 
 const Accessories = () => {
 
   const [item, setItem] = useState([])
+  const dispatch = useDispatch()
 
   useEffect(() => {
     const fetchData = async () => {
-      const response = await axios.get('http://localhost:5050/pages/')
+      const response = await axios.post('http://localhost:5050/pages/AllData')
       console.log(response.data)
       setItem(response.data)
     }
@@ -28,11 +33,13 @@ const Accessories = () => {
                 <p>Price: ₹{data.price.cost}</p>
                 <p>MRP : <b className='mrp'>₹{data.price.mrp}</b></p>
               </NavLink>
-              <button className='AddBtn'>Add to Cart</button>
+              <button className='AddBtn' onClick={()=>dispatch(add(data))}>Add to Cart</button>
+
             </div>
           </>
         )
       })}
+      <Footer/>
     </div>
   )
 }
