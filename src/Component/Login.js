@@ -14,7 +14,7 @@ const Login = () => {
 
     const handleLogin = ()=>{
         // const response = 
-        axios.post('http://localhost:5050/pages/login',{email,password})
+        axios.post('https://ecommerce-backend-b6ys.onrender.com/pages/login',{email,password})
         .then((res)=>{
             console.log(res.data)
 

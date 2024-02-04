@@ -13,7 +13,7 @@ const Register = () => {
 
     const handleRegister = () => {
         // const response = 
-        axios.post('http://localhost:5050/pages/register', { email, password })
+        axios.post('https://ecommerce-backend-b6ys.onrender.com/pages/register', { email, password })
             .then((res) => {
                 console.log(res.data)
 
