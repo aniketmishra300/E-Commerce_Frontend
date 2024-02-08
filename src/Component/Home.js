@@ -1,28 +1,41 @@
 import React, { useEffect, useState } from 'react'
 import { NavLink } from 'react-router-dom'
-import { useDispatch } from 'react-redux'
 import axios from 'axios'
-import {add} from "../Store/Action"
 import Footer from '../Routes/Footer'
+import { ToastContainer, toast } from 'react-toastify'
 
 
 
 const Home = () => {
 
 
-
     const [item, setItem] = useState([])
-    const dispatch = useDispatch()
+  
+
+    // const isUserLoggedIn = useSelector((state) => state.state.isLoggedIn);
 
 
     useEffect(() => {
         const fetchData = async () => {
-            const response = await axios.post('https://ecommerce-backend-b6ys.onrender.com/pages/AllData/')
-            console.log(response.data)
+            const response = await axios.post('http://localhost:5050/pages/AllData')
+            // console.log(response.data)
             setItem(response.data)
         }
         fetchData()
     }, [])
+
+    
+    const AddToCart = async (data)=>{
+        const token = localStorage.getItem("token")
+           if(token){
+             await axios.post("http://localhost:5050/pages/AddToCart",data)
+             toast("item added")
+           }else{
+             toast("login First!")
+           }
+       }
+     
+
 
     return (
         <div className='Main_Container'>
@@ -36,14 +49,14 @@ const Home = () => {
                                 <p>Price: ₹{data.price.cost}</p>
                                 <p>MRP : <b className='mrp'>₹{data.price.mrp}</b></p>
                             </NavLink>
-              <button className='AddBtn' onClick={()=>dispatch(add(data))}>Add to Cart</button>
-
+                            <button className='AddBtn' onClick={() => AddToCart(data)}>Add to Cart</button>
                         </div>
                     </>
                 )
             })}
 
-            <Footer/>
+            <ToastContainer />
+            <Footer />
         </div>
     )
 }

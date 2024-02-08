@@ -3,9 +3,8 @@ import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import "../App.css"
 import { NavLink } from 'react-router-dom'
-import { useDispatch } from 'react-redux'
-import { add } from "../Store/Action"
 import Footer from '../Routes/Footer'
+import { ToastContainer, toast } from 'react-toastify'
 
 // import NavBar from '../Routes/NavBar'
 
@@ -14,17 +13,27 @@ import Footer from '../Routes/Footer'
 const Main = () => {
 
   const [item, setItem] = useState([])
-  const dispatch = useDispatch()
 
 
   useEffect(() => {
     const fetchData = async () => {
-      const response = await axios.post('https://ecommerce-backend-b6ys.onrender.com/pages/AllData')
-      console.log(response.data)
+      const response = await axios.post('http://localhost:5050/pages/AllData')
+      // console.log(response.data)
       setItem(response.data)
     }
     fetchData()
   }, [])
+
+  
+  const AddToCart = async (data)=>{
+    const token = localStorage.getItem("token")
+       if(token){
+         await axios.post("http://localhost:5050/pages/AddToCart",data)
+         toast("item added")
+       }else{
+         toast("login First!")
+       }
+   }
 
   return (
     <div>
@@ -41,11 +50,13 @@ const Main = () => {
                   <p>Price: ₹{data.price.cost}</p>
                   <p>MRP : <b className='mrp'>₹{data.price.mrp}</b></p>
                 </NavLink>
-                <button className='AddBtn' onClick={() => dispatch(add(data))}>Add to Cart</button>
+              <button className='AddBtn' onClick={()=>AddToCart(data)}>Add to Cart</button>
               </div>
             </>
           )
         })}
+        {/* <img src='https://rukminim2.flixcart.com/fk-p-flap/1600/270/image/08fe6e3ced211fe1.jpeg?q=20' alt='not found'/> */}
+        <ToastContainer/>
         <Footer />
       </div>
     </div>

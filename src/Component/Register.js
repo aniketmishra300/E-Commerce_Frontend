@@ -13,19 +13,22 @@ const Register = () => {
 
     const handleRegister = () => {
         // const response = 
-        axios.post('https://ecommerce-backend-b6ys.onrender.com/pages/register', { email, password })
+        axios.post('http://localhost:5050/pages/register', {name,email,password})
             .then((res) => {
                 console.log(res.data)
 
-                if (res.data.msg === "email is already exist") {
+                if(res.data.msg === "email is already exist") {
                     // console.log(res.data.msg)
                     toast(res.data.msg, "! Please Login")
                     navigate("/login")
+                }else if(res.data.msg === "User registered successfully"){
+
+                    // toast(res.data.msg,"hello")
+                    alert(res.data.msg)
+                    navigate("/")
                 }
             })
         // console.log(response.data)
-        toast("user registered successfully")
-        navigate('/login')
 
     }
 
@@ -42,7 +45,7 @@ const Register = () => {
                 <input type='text' placeholder='Enter Password' value={password} onChange={(e) => setPassword(e.target.value)} />
             </span>
             <button className='Login_Btn' type='submit' onClick={handleRegister}>Register</button>
-            <NavLink to='/login'>Already signup? Clik here to Login</NavLink>
+            <NavLink to='/login'><h3>Already signup? Clik here to Login</h3></NavLink>
             <ToastContainer />
         </div>
     )
