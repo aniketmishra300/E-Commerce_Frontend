@@ -14,7 +14,7 @@ const DynamicPage = () => {
 
     useEffect(() => {
         const fetchData = async () => {
-            const response = await axios.post('http://localhost:5050/pages/AllData')
+            const response = await axios.post('https://ecommerce-backend-b6ys.onrender.com/pages/AllData')
             // console.log(response.data)
             setItem(response.data)
         }
@@ -26,7 +26,7 @@ const DynamicPage = () => {
     const AddToCart = async (data)=>{
         const token = localStorage.getItem("token")
            if(token){
-             await axios.post("http://localhost:5050/pages/AddToCart",data)
+             await axios.post("https://ecommerce-backend-b6ys.onrender.com/pages/AddToCart",data)
              toast("item added")
            }else{
              toast("login First!")

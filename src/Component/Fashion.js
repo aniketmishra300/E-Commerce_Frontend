@@ -16,7 +16,7 @@ const Fashion = (props) => {
   const AddToCart = async (data)=>{
     const token = localStorage.getItem("token")
        if(token){
-         await axios.post("http://localhost:5050/pages/AddToCart",data)
+         await axios.post("https://ecommerce-backend-b6ys.onrender.com/pages/AddToCart",data)
          toast("item added")
        }else{
          toast("login First!")

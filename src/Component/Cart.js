@@ -44,7 +44,7 @@ const Cart = () => {
 
     useEffect(() => {
         try {
-            axios.get('http://localhost:5050/pages/getCartData')
+            axios.get('https://ecommerce-backend-b6ys.onrender.com/pages/getCartData')
                 .then((res) => {
                     setValue(res.data)
                 })
@@ -54,7 +54,7 @@ const Cart = () => {
     }, [])
 
     const RemoveItems = async (data) => {
-        await axios.post("http://localhost:5050/pages/RemoveItem", data)
+        await axios.post("https://ecommerce-backend-b6ys.onrender.com/pages/RemoveItem", data)
 
         setValue(value.filter((item) => item.id !== data.id))
 
@@ -63,7 +63,7 @@ const Cart = () => {
 
     
     const CartEmpty = async (data) => {
-        await axios.post("http://localhost:5050/pages/checkout")
+        await axios.post("https://ecommerce-backend-b6ys.onrender.com/pages/checkout")
 
         // setValue(value.filter((item) => item.id !== data.id))
         Navigate("/chekout")
